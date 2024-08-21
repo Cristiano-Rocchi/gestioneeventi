@@ -2,46 +2,38 @@ package cristianorocchi.entities;
 
 import jakarta.persistence.*;
 
-import java.util.UUID;
-
-enum Stato {
-    CONFERMATO, RIFIUTATO, IN_ATTESA
-}
-
 @Entity
 @Table(name = "partecipazione")
 public class Partecipazione {
-
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private UUID id;
+    private long id;
 
     @ManyToOne
-    @JoinColumn(name = "persona_id", referencedColumnName = "id")
+    @JoinColumn(name = "persona_id")
     private Persona persona;
 
     @ManyToOne
-    @JoinColumn(name = "evento_id", referencedColumnName = "id")
+    @JoinColumn(name = "evento_id")
     private Evento evento;
 
-    @Enumerated(EnumType.STRING)
-    private Stato stato;
+    private String stato;
 
     public Partecipazione() {
     }
 
-    public Partecipazione(Persona persona, Evento evento, Stato stato) {
+    public Partecipazione(Persona persona, Evento evento, String stato) {
         this.persona = persona;
         this.evento = evento;
         this.stato = stato;
     }
 
-    // Getters and Setters
-    public UUID getId() {
+    // Getter e Setter
+    public long getId() {
         return id;
     }
 
-    public void setId(UUID id) {
+    public void setId(long id) {
         this.id = id;
     }
 
@@ -61,12 +53,11 @@ public class Partecipazione {
         this.evento = evento;
     }
 
-    public Stato getStato() {
+    public String getStato() {
         return stato;
     }
 
-    public void setStato(Stato stato) {
+    public void setStato(String stato) {
         this.stato = stato;
     }
 }
-

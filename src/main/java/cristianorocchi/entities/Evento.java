@@ -19,6 +19,9 @@ public class Evento {
     private String titolo;
     private LocalDate dataEvento;
     private String descrizione;
+    @ManyToOne
+    private int luogo_id;
+
 
     @Enumerated(EnumType.STRING)
     private TipoEvento tipoEvento;
