@@ -3,6 +3,7 @@ package cristianorocchi.entities;
 import jakarta.persistence.*;
 
 import java.time.LocalDate;
+import java.util.UUID;
 
 enum TipoEvento {
     PUBBLICO, PRIVATO
@@ -14,7 +15,7 @@ public class Evento {
 
     @Id
     @GeneratedValue
-    private Long id;
+    private UUID id;
 
     private String titolo;
     private LocalDate dataEvento;
@@ -40,11 +41,11 @@ public class Evento {
     }
 
     /*getter setters*/
-    public Long getId() {
+    public UUID getId() {
         return id;
     }
 
-    public void setId(Long id) {
+    public void setId(UUID id) {
         this.id = id;
     }
 
